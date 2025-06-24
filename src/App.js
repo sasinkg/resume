@@ -685,7 +685,7 @@ return (
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </section>
 
       <section id="contact" className="py-20 relative z-10 bg-gray-50">
