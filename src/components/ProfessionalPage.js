@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Mail, MapPin, Github, Linkedin, Download, Code, Cpu, Zap, Database, Monitor, User, Sparkles } from 'lucide-react';
+import { ChevronDown, Mail, MapPin, Github, Linkedin, Download, Code, Cpu, Zap, Database, User, Sparkles } from 'lucide-react';
 import ProjectsSection from './ProjectsSection';
 
 const ProfessionalPage = ({ setCurrentPage }) => {
