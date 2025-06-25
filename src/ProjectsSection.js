@@ -177,4 +177,67 @@ const ProjectsSection = ({ isVisible }) => {
                 </div>
                 <h3 className="text-xl font-medium text-gray-900">Superheterodyne AM Receiver</h3>
               </div>
-              <p className="text-gray-600
+              <p className="text-gray-600 mb-3">Constructed an AM radio receiver on breadboard using M2K analog-to-digital converter. Features I-F filter, bandpass filter, and envelope detector for signal demodulation.</p>
+              <p className="text-gray-500 text-sm mb-4">Implemented frequency shifting to lower spectrum ranges and used envelope detector to demodulate signals while connecting input peaks to add controlled audio distortion.</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200">Analog Circuits</span>
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200">Signal Processing</span>
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200">Python</span>
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200">RF Engineering</span>
+              </div>
+              <button 
+                onClick={() => window.open('https://youtu.be/5x0ivhHzR3E?si=suMkQ1u0_1-ePzrm', '_blank')}
+                className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Watch Demo
+              </button>
+            </div>
+
+            {/* Web Projects */}
+            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105 group">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="text-indigo-600 group-hover:text-indigo-700 transition-colors">
+                  <Monitor className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-medium text-gray-900">Am I a Casual?</h3>
+              </div>
+              <p className="text-gray-600 mb-4">A responsive daily sports trivia web application with daily question rotation, answer validation, and real-time score tracking.</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200">TypeScript</span>
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200">React.js</span>
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200">Mantine Library</span>
+              </div>
+              <button className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors">
+                <ExternalLink className="w-4 h-4" />
+                View Project
+              </button>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105 group">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="text-indigo-600 group-hover:text-indigo-700 transition-colors">
+                  <User className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-medium text-gray-900">ourmind</h3>
+              </div>
+              <p className="text-gray-600 mb-4">A daily journaling web application inspired by BeReal, allowing users to join groups and respond to daily questions together.</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200">TypeScript</span>
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200">React.js</span>
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200">Firebase</span>
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200">Chakra UI</span>
+              </div>
+              <button className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors">
+                <ExternalLink className="w-4 h-4" />
+                View Project
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ProjectsSection;
