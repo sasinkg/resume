@@ -25,9 +25,7 @@ const CreativePage = ({ setCurrentPage }) => {
       category: 'Photography',
       icon: <Camera className="w-8 h-8" />,
       items: [
-        { title: 'Seattle Street Photography', description: 'Urban landscape and street life captures', type: 'Photo Series' },
-        { title: 'Tech Event Coverage', description: 'Photography from hackathons and tech meetups', type: 'Event Photos' },
-        { title: 'Portrait Experiments', description: 'Creative portrait photography with unique lighting', type: 'Studio Work' }
+        { title: 'Seattle Photography', description: 'Urban landscape and street life captures', type: 'Photo Series' },
       ]
     },
     {
@@ -37,17 +35,13 @@ const CreativePage = ({ setCurrentPage }) => {
       youtubeId: '3zT2YE7rP7k',
       items: [
         { title: 'Portugal Travel Vlog', description: 'Epic adventure through Portugal - exploring cities, culture, and hidden gems', type: 'Travel Documentary', featured: true },
-        { title: 'Code & Coffee', description: 'Daily coding vlogs with productivity tips', type: 'YouTube Channel' },
-        { title: 'Tech Review Shorts', description: 'Quick reviews of developer tools and gadgets', type: 'Instagram Reels' }
       ]
     },
     {
       category: 'Design Projects',
       icon: <Palette className="w-8 h-8" />,
       items: [
-        { title: 'UI/UX Explorations', description: 'Experimental interface designs and prototypes', type: 'Figma Concepts' },
-        { title: 'Brand Identity Work', description: 'Logo and branding for local startups', type: 'Client Work' },
-        { title: 'Digital Art', description: 'Abstract digital compositions and illustrations', type: 'Art Gallery' }
+        // { title: 'Digital Art', description: 'Abstract digital compositions and illustrations', type: 'Art Gallery' }
       ]
     }
   ];

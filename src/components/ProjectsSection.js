@@ -67,7 +67,6 @@ const ProjectsSection = ({ isVisible }) => {
                 </div>
                 <div>
                   <h3 className="text-xl font-medium text-gray-900">Early Bird Alarm Clock Robot</h3>
-                  <span className="text-xs px-2 py-1 bg-orange-100 text-orange-700 rounded-full">In Progress</span>
                 </div>
               </div>
               <p className="text-gray-600 mb-3">Designed, built and programmed an alarm clock robot that runs away when the alarm triggers and requires solving a math puzzle to deactivate. Features autonomous movement, object avoidance, and environment mapping.</p>
@@ -201,6 +200,7 @@ const ProjectsSection = ({ isVisible }) => {
                   <Monitor className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-medium text-gray-900">Am I a Casual?</h3>
+                <span className="text-xs px-2 py-1 bg-orange-100 text-orange-700 rounded-full">in Progress</span>
               </div>
               <p className="text-gray-600 mb-4">A responsive daily sports trivia web application with daily question rotation, answer validation, and real-time score tracking.</p>
               <div className="flex flex-wrap gap-2 mb-4">
@@ -220,6 +220,7 @@ const ProjectsSection = ({ isVisible }) => {
                   <User className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-medium text-gray-900">ourmind</h3>
+                <span className="text-xs px-2 py-1 bg-orange-100 text-orange-700 rounded-full">In Progress</span>
               </div>
               <p className="text-gray-600 mb-4">A daily journaling web application inspired by BeReal, allowing users to join groups and respond to daily questions together.</p>
               <div className="flex flex-wrap gap-2 mb-4">
