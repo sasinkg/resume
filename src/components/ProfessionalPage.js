@@ -169,7 +169,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
               <div className="flex justify-center">
                 <div className="w-64 h-64 bg-gray-100 rounded-3xl overflow-hidden flex items-center justify-center border border-gray-200">
                   <img 
-                  src = "../../public/image.jpg"
+                  src = "%PUBLIC_URL%/image.jpg"
                   alt = "Sasin"
                   className = "w-full h-full object-cover"
                   />
