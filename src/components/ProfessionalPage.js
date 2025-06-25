@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Mail, MapPin, Github, Linkedin, Download, Code, Cpu, Zap, Database, User, Sparkles } from 'lucide-react';
+import { ChevronDown, Mail, MapPin, Github, Linkedin, Download, Code, Cpu, Zap, Database, Sparkles } from 'lucide-react';
 import ProjectsSection from './ProjectsSection';
 
 const ProfessionalPage = ({ setCurrentPage }) => {
@@ -167,8 +167,12 @@ const ProfessionalPage = ({ setCurrentPage }) => {
                 </div>
               </div>
               <div className="flex justify-center">
-                <div className="w-64 h-64 bg-gray-100 rounded-full flex items-center justify-center border border-gray-200">
-                  <User className="w-32 h-32 text-gray-300" />
+                <div className="w-64 h-64 bg-gray-100 rounded-3xl overflow-hidden flex items-center justify-center border border-gray-200">
+                  <img 
+                  src = "/image.jpg"
+                  alt = "Sasin"
+                  className = "w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
