@@ -40,7 +40,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
 
   const experience = [
     {
-      title: 'Software Engineer',
+      title: 'Software Engineer 2',
       company: 'Boeing',
       location: 'Seattle, WA',
       period: 'February 2023 - Present',
@@ -72,7 +72,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="text-2xl font-semibold text-gray-900">
-              Sasin Gudipati
+              Sasin
             </div>
             <div className="hidden md:flex space-x-8">
               {['hero', 'about', 'skills', 'experience', 'projects', 'contact'].map((section) => (
@@ -92,10 +92,10 @@ const ProfessionalPage = ({ setCurrentPage }) => {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center relative bg-white">
+      <section id="hero" className="min-h-screen flex items-center justify-center relative bg-gray">
         <div className="text-center z-10 px-6">
           <div className={`transform transition-all duration-1000 ${isVisible.hero ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h1 className="text-6xl md:text-8xl font-light mb-6 text-gray-900">
+            <h1 className="text-6xl md:text-8xl font-bold mb-6 text-gray-900">
               Sasin Gudipati
             </h1>
             <p className="text-2xl md:text-3xl mb-4 text-gray-600 font-light">
@@ -105,7 +105,26 @@ const ProfessionalPage = ({ setCurrentPage }) => {
               Full-Stack Development • Graphics Programming • Embedded Systems
             </p>
             <div className="flex items-center justify-center gap-2 mb-12 text-gray-500">
-              <MapPin className="w-5 h-5" />
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  {/* Antenna/Needle tip */}
+                  <rect x="11.8" y="1" width="0.4" height="4"/>
+                  
+                  {/* Top structure */}
+                  <rect x="10.5" y="5" width="3" height="1"/>
+                  
+                  {/* Upper deck */}
+                  <ellipse cx="12" cy="7" rx="4" ry="1.5"/>
+                  
+                  {/* Main observation deck */}
+                  <ellipse cx="12" cy="9.5" rx="6" ry="2"/>
+                  
+                  {/* Support legs */}
+                  <path d="M9 11.5 L10.5 22 L11.5 22 L12 12 Z"/>
+                  <path d="M15 11.5 L13.5 22 L12.5 22 L12 12 Z"/>
+                  
+                  {/* Center column */}
+                  <rect x="11.7" y="11.5" width="0.6" height="10.5"/>
+                </svg>
               <span>Seattle, WA</span>
             </div>
             <div className="flex flex-col md:flex-row gap-4 justify-center mb-8">
@@ -144,7 +163,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
       <section id="about" className="py-20 relative z-10 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <div className={`transform transition-all duration-1000 ${isVisible.about ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-4xl md:text-5xl font-light mb-12 text-center text-gray-900">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-gray-900">
               About Me
             </h2>
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -160,9 +179,9 @@ const ProfessionalPage = ({ setCurrentPage }) => {
                     <div className="text-3xl font-light text-indigo-600">2+</div>
                     <div className="text-sm text-gray-500">Years Experience</div>
                   </div>
-                  <div className="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-200">
-                    <div className="text-3xl font-light text-indigo-600">UIUC</div>
-                    <div className="text-sm text-gray-500">Electrical Engineering</div>
+                  <div className="text-center p-6 bg-indigo-900 rounded-lg shadow-sm border border-gray-200">
+                    <div className="text-3xl font-light text-orange-600">UIUC</div>
+                    <div className="text-sm text-white">Electrical Engineering</div>
                   </div>
                 </div>
               </div>
@@ -184,7 +203,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
       <section id="skills" className="py-20 relative z-10 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className={`transform transition-all duration-1000 ${isVisible.skills ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-4xl md:text-5xl font-light mb-12 text-center text-gray-900">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-gray-900">
               Skills & Technologies
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -219,7 +238,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
       <section id="experience" className="py-20 relative z-10 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <div className={`transform transition-all duration-1000 ${isVisible.experience ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-4xl md:text-5xl font-light mb-12 text-center text-gray-900">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-gray-900">
               Experience
             </h2>
             <div className="space-y-8">

@@ -47,7 +47,7 @@ const CreativePage = ({ setCurrentPage }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-orange-900 text-white overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-cyan-900 to-green-900 text-white overflow-hidden">
       {/* Creative Background */}
       <div className="fixed inset-0 z-0">
         {[...Array(30)].map((_, i) => (
@@ -88,8 +88,8 @@ const CreativePage = ({ setCurrentPage }) => {
       <section className="min-h-screen flex items-center justify-center relative pt-20">
         <div className="text-center z-10 px-6">
           <div className="transform transition-all duration-1000 translate-y-0 opacity-100">
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-pink-400 via-purple-400 to-orange-400 bg-clip-text text-transparent animate-pulse">
-              Let's Get Weird
+            <h1 className="text-6xl md:text-8xl font-bold mb-6 text-white bg-clip-text text-transparent animate-pulse">
+              Welcome to my brain!
             </h1>
             <p className="text-2xl md:text-3xl mb-8 text-white/80">
               Where Engineering Meets Art
