@@ -30,8 +30,8 @@ const ProfessionalPage = ({ setCurrentPage }) => {
   };
 
   const skills = [
-    { name: 'React.js', level: 90, icon: <Code className="w-5 h-5" /> },
-    { name: 'JavaScript/TypeScript', level: 85, icon: <Code className="w-5 h-5" /> },
+    { name: 'React.js', level: 95, icon: <Code className="w-5 h-5" /> },
+    { name: 'JavaScript/TypeScript', level: 90, icon: <Code className="w-5 h-5" /> },
     { name: 'Java', level: 80, icon: <Cpu className="w-5 h-5" /> },
     { name: 'Python', level: 75, icon: <Database className="w-5 h-5" /> },
     { name: 'C/C++', level: 85, icon: <Zap className="w-5 h-5" /> },
