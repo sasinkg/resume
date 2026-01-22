@@ -211,7 +211,8 @@ const ProjectsSection = ({ isVisible }) => {
                 <span className="px-3 py-1 bg-gray-100 dark:bg-slate-700/70 text-gray-700 dark:text-slate-300 rounded-full text-sm border border-gray-200 dark:border-slate-600">React.js</span>
                 <span className="px-3 py-1 bg-gray-100 dark:bg-slate-700/70 text-gray-700 dark:text-slate-300 rounded-full text-sm border border-gray-200 dark:border-slate-600">Mantine Library</span>
               </div>
-              <button className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">
+              <button className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
+              onClick={() => window.open('https://sasinkg.github.io/am-i-a-casual/', '_blank')}>
                 <ExternalLink className="w-4 h-4" />
                 View Project
               </button>
