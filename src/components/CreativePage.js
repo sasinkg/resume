@@ -6,7 +6,7 @@ import {
   Video,
   Palette,
   Sparkles,
-  Link
+  Link,
 } from "lucide-react";
 
 const CreativePage = ({ setCurrentPage }) => {
@@ -18,46 +18,26 @@ const CreativePage = ({ setCurrentPage }) => {
       items: [
         {
           title: "orange sunsets",
-          description:
-            "Your most popular track with 3,927 plays - dreamy atmospheric vibes",
-          type: "Top Hit",
-          plays: "3,927",
           url: "https://open.spotify.com/track/43Wv9YF5KtIx4p3EtXXqsU",
         },
         {
           title: "strawberry skies",
-          description:
-            "Second most popular with 2,796 plays - sweet melodic journey",
-          type: "Fan Favorite",
-          plays: "2,796",
           url: "https://open.spotify.com/track/3nZVMIgupH06Jcha9N1Ech",
         },
         {
           title: "carefree",
-          description: "Chill vibes with 2,538 plays - perfect for relaxation",
-          type: "Chill",
-          plays: "2,538",
           url: "https://open.spotify.com/track/3nXHFW7xHLPjndReY66Mz4",
         },
         {
           title: "summer nights",
-          description: "Warm nostalgic sounds capturing those perfect evenings",
-          type: "Seasonal",
-          plays: "<1000",
           url: "https://open.spotify.com/track/3yOMxSYz4P52C6mLTV6KmL",
         },
         {
           title: "you're already gone",
-          description: "A softer one — bittersweet, reflective, and airy.",
-          type: "Emotional",
-          plays: "<1000",
           url: "https://open.spotify.com/track/4W8uYeGtHH5PRd8nbIuOyU",
         },
         {
           title: "friendzone",
-          description: "Sad banger energy. Heartbreak but make it catchy.",
-          type: "Emotional",
-          plays: "<1000",
           url: "https://open.spotify.com/track/6keOxUdbjgqBafKmxKHZOU",
         },
       ],
@@ -234,8 +214,9 @@ const CreativePage = ({ setCurrentPage }) => {
                             }}
                             className="text-pink-300 hover:text-pink-400 hover:underline"
                           >
-                            <div className = "flex flex-wrap gap-2 mb-4"><Link className="w-5 h-5"></Link> {link.label}</div>
-                            
+                            <div className="flex flex-wrap gap-2 mb-4">
+                              <Link className="w-5 h-5"></Link> {link.label}
+                            </div>
                           </button>
                         ))}
                       </div>
