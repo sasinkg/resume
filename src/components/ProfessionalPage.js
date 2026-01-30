@@ -1,10 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronDown, Mail, Github, Linkedin, Download, Code, Cpu, Zap, Database, Sparkles } from 'lucide-react';
-import ProjectsSection from './ProjectsSection';
-import ThemeToggle from './ThemeToggle';
+import React, { useState, useEffect } from "react";
+import {
+  ChevronDown,
+  Mail,
+  Github,
+  Linkedin,
+  Download,
+  Code,
+  Cpu,
+  Zap,
+  Database,
+  Sparkles,
+} from "lucide-react";
+import ProjectsSection from "./ProjectsSection";
+import ThemeToggle from "./ThemeToggle";
 
 const ProfessionalPage = ({ setCurrentPage }) => {
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState("hero");
   const [isVisible, setIsVisible] = useState({});
 
   useEffect(() => {
@@ -12,58 +23,64 @@ const ProfessionalPage = ({ setCurrentPage }) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setIsVisible(prev => ({ ...prev, [entry.target.id]: true }));
+            setIsVisible((prev) => ({ ...prev, [entry.target.id]: true }));
             setActiveSection(entry.target.id);
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll("section[id]");
     sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (sectionId) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
   };
 
   const skills = [
-    { name: 'React.js', level: 95, icon: <Code className="w-5 h-5" /> },
-    { name: 'JavaScript/TypeScript', level: 90, icon: <Code className="w-5 h-5" /> },
-    { name: 'Java', level: 80, icon: <Cpu className="w-5 h-5" /> },
-    { name: 'Python', level: 75, icon: <Database className="w-5 h-5" /> },
-    { name: 'C/C++', level: 85, icon: <Zap className="w-5 h-5" /> },
-    { name: 'Rust', level: 70, icon: <Cpu className="w-5 h-5" /> }
+    { name: "React.js", level: 95, icon: <Code className="w-5 h-5" /> },
+    {
+      name: "JavaScript/TypeScript",
+      level: 90,
+      icon: <Code className="w-5 h-5" />,
+    },
+    { name: "Java", level: 80, icon: <Cpu className="w-5 h-5" /> },
+    { name: "Python", level: 75, icon: <Database className="w-5 h-5" /> },
+    { name: "C/C++", level: 85, icon: <Zap className="w-5 h-5" /> },
+    { name: "Rust", level: 70, icon: <Cpu className="w-5 h-5" /> },
   ];
 
   const experience = [
     {
-      title: 'Software Engineer 2',
-      company: 'Boeing',
-      location: 'Seattle, WA',
-      period: 'February 2023 - Present',
-      description: 'Enhanced JavaScript React.js simulation apps, automated CI/CD pipelines reducing release time from 2 days to 30 minutes, and engineered full-stack Java solutions for Virtual Flight Deck systems.',
+      title: "Software Engineer 2",
+      company: "Boeing",
+      location: "Seattle, WA",
+      period: "February 2023 - Present",
+      description:
+        "Enhanced JavaScript React.js simulation apps, automated CI/CD pipelines reducing release time from 2 days to 30 minutes, and engineered full-stack Java solutions for Virtual Flight Deck systems.",
       highlights: [
-        'Cut simulation build expenditure by 4% through recursion-based algorithms',
-        'Improved VFD button response time from 1ms to 0.8ms',
-        'Developed flight deck panels using Rust, Java, and C++'
-      ]
+        "Cut simulation build expenditure by 4% through recursion-based algorithms",
+        "Improved VFD button response time from 1ms to 0.8ms",
+        "Developed flight deck panels using Rust, Java, and C++",
+      ],
     },
     {
-      title: 'Software Engineer Intern',
-      company: 'Garmin International',
-      location: 'Kansas City, KS',
-      period: 'May 2022 - August 2022',
-      description: 'Integrated Vulkan-enabled drivers into Garmin In-Flight Display 3, resolved 1500 coverage holes, and developed Python tools saving engineers 50% time.',
+      title: "Software Engineer Intern",
+      company: "Garmin International",
+      location: "Kansas City, KS",
+      period: "May 2022 - August 2022",
+      description:
+        "Integrated Vulkan-enabled drivers into Garmin In-Flight Display 3, resolved 1500 coverage holes, and developed Python tools saving engineers 50% time.",
       highlights: [
-        'Successfully transitioned graphics from OpenGL to Vulkan API',
-        'Designed graphical simulation adhering to Vulkan standards',
-        'Developed automated function sorting tools'
-      ]
-    }
+        "Successfully transitioned graphics from OpenGL to Vulkan API",
+        "Designed graphical simulation adhering to Vulkan standards",
+        "Developed automated function sorting tools",
+      ],
+    },
   ];
 
   return (
@@ -77,12 +94,21 @@ const ProfessionalPage = ({ setCurrentPage }) => {
             </div>
             <div className="flex items-center gap-4">
               <div className="hidden md:flex space-x-8">
-                {['hero', 'about', 'skills', 'experience', 'projects', 'contact'].map((section) => (
+                {[
+                  "hero",
+                  "about",
+                  "skills",
+                  "experience",
+                  "projects",
+                  "contact",
+                ].map((section) => (
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
                     className={`capitalize transition-all duration-300 hover:text-indigo-400 ${
-                      activeSection === section ? 'text-indigo-400 font-medium' : 'text-gray-600 dark:text-slate-300'
+                      activeSection === section
+                        ? "text-indigo-400 font-medium"
+                        : "text-gray-600 dark:text-slate-300"
                     }`}
                   >
                     {section}
@@ -96,9 +122,14 @@ const ProfessionalPage = ({ setCurrentPage }) => {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center relative bg-white dark:bg-slate-900">
+      <section
+        id="hero"
+        className="min-h-screen flex items-center justify-center relative bg-white dark:bg-slate-900"
+      >
         <div className="text-center z-10 px-6">
-          <div className={`transform transition-all duration-1000 ${isVisible.hero ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div
+            className={`transform transition-all duration-1000 ${isVisible.hero ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+          >
             <h1 className="text-6xl md:text-8xl font-bold mb-6 text-gray-900 dark:text-slate-100">
               Sasin Gudipati
             </h1>
@@ -110,91 +141,115 @@ const ProfessionalPage = ({ setCurrentPage }) => {
             </p>
             <div className="flex items-center justify-center gap-2 mb-12 text-gray-500 dark:text-slate-400">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                  {/* Antenna/Needle tip */}
-                  <rect x="11.8" y="1" width="0.4" height="4"/>
-                  
-                  {/* Top structure */}
-                  <rect x="10.5" y="5" width="3" height="1"/>
-                  
-                  {/* Upper deck */}
-                  <ellipse cx="12" cy="7" rx="4" ry="1.5"/>
-                  
-                  {/* Main observation deck */}
-                  <ellipse cx="12" cy="9.5" rx="6" ry="2"/>
-                  
-                  {/* Support legs */}
-                  <path d="M9 11.5 L10.5 22 L11.5 22 L12 12 Z"/>
-                  <path d="M15 11.5 L13.5 22 L12.5 22 L12 12 Z"/>
-                  
-                  {/* Center column */}
-                  <rect x="11.7" y="11.5" width="0.6" height="10.5"/>
-                </svg>
+                {/* Antenna/Needle tip */}
+                <rect x="11.8" y="1" width="0.4" height="4" />
+
+                {/* Top structure */}
+                <rect x="10.5" y="5" width="3" height="1" />
+
+                {/* Upper deck */}
+                <ellipse cx="12" cy="7" rx="4" ry="1.5" />
+
+                {/* Main observation deck */}
+                <ellipse cx="12" cy="9.5" rx="6" ry="2" />
+
+                {/* Support legs */}
+                <path d="M9 11.5 L10.5 22 L11.5 22 L12 12 Z" />
+                <path d="M15 11.5 L13.5 22 L12.5 22 L12 12 Z" />
+
+                {/* Center column */}
+                <rect x="11.7" y="11.5" width="0.6" height="10.5" />
+              </svg>
               <span>Seattle, WA</span>
             </div>
             <div className="flex flex-col md:flex-row gap-4 justify-center mb-8">
-              <button 
-                onClick={() => scrollToSection('contact')}
+              <button
+                onClick={() => scrollToSection("contact")}
                 className="px-8 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 Get In Touch
               </button>
-              <button className="px-8 py-3 border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+              <a
+                href={`${process.env.PUBLIC_URL}/resume.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3 border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 justify-center"
+              >
                 <Download className="w-4 h-4" />
-                Download Resume
-              </button>
+                View Resume
+              </a>
             </div>
-            <button 
-              onClick={() => setCurrentPage('creative')}
+            <button
+              onClick={() => setCurrentPage("creative")}
               className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white rounded-full hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 transition-all duration-500 transform hover:scale-110 shadow-xl hover:shadow-2xl font-bold text-lg overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Let's Get Weird 
+                Let's Get Weird
                 <Sparkles className="w-5 h-5 group-hover:animate-spin" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </button>
           </div>
           <div className="animate-bounce mt-8">
-            <ChevronDown 
+            <ChevronDown
               className="w-8 h-8 mx-auto cursor-pointer hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-gray-400 dark:text-slate-500"
-              onClick={() => scrollToSection('about')}
+              onClick={() => scrollToSection("about")}
             />
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 relative z-10 bg-gray-50 dark:bg-slate-800">
+      <section
+        id="about"
+        className="py-20 relative z-10 bg-gray-50 dark:bg-slate-800"
+      >
         <div className="max-w-6xl mx-auto px-6">
-          <div className={`transform transition-all duration-1000 ${isVisible.about ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div
+            className={`transform transition-all duration-1000 ${isVisible.about ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-gray-900 dark:text-slate-100">
               About Me
             </h2>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <p className="text-lg text-gray-600 dark:text-slate-300 leading-relaxed">
-                  I'm a passionate Software Engineer with expertise spanning web development, graphics programming, and embedded systems. Currently working at Boeing, I specialize in React.js applications, automation, and performance optimization.
+                  I'm a passionate Software Engineer with expertise spanning web
+                  development, graphics programming, and embedded systems.
+                  Currently working at Boeing, I specialize in React.js
+                  applications, automation, and performance optimization.
                 </p>
                 <p className="text-lg text-gray-600 dark:text-slate-300 leading-relaxed">
-                  My experience includes everything from enhancing flight simulation systems to developing engaging web applications. I love tackling complex technical challenges and creating efficient, scalable solutions.
+                  My experience includes everything from enhancing flight
+                  simulation systems to developing engaging web applications. I
+                  love tackling complex technical challenges and creating
+                  efficient, scalable solutions.
                 </p>
                 <div className="grid grid-cols-2 gap-4 pt-4">
                   <div className="text-center p-6 bg-white dark:bg-slate-700 rounded-lg shadow-sm border border-gray-200 dark:border-slate-600">
-                    <div className="text-3xl font-light text-indigo-600 dark:text-indigo-400">2+</div>
-                    <div className="text-sm text-gray-500 dark:text-slate-400">Years Experience</div>
+                    <div className="text-3xl font-light text-indigo-600 dark:text-indigo-400">
+                      2+
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-slate-400">
+                      Years Experience
+                    </div>
                   </div>
-                    <div className="text-center p-6 bg-indigo-900 dark:bg-indigo-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-600">
-                    <div className="text-3xl font-light text-orange-600 dark:text-orange-400">UIUC</div>
-                    <div className="text-sm text-white dark:text-slate-200">Electrical Engineering</div>
+                  <div className="text-center p-6 bg-indigo-900 dark:bg-indigo-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-600">
+                    <div className="text-3xl font-light text-orange-600 dark:text-orange-400">
+                      UIUC
+                    </div>
+                    <div className="text-sm text-white dark:text-slate-200">
+                      Electrical Engineering
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="flex justify-center">
                 <div className="w-64 h-64 bg-gray-100 dark:bg-slate-700 rounded-3xl overflow-hidden flex items-center justify-center border border-gray-200 dark:border-slate-600">
-                  <img 
-                  src = {`${process.env.PUBLIC_URL}/image.jpg`}
-                  alt = "Sasin"
-                  className = "w-full h-full object-cover"
+                  <img
+                    src={`${process.env.PUBLIC_URL}/image.jpg`}
+                    alt="Sasin"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>
@@ -204,33 +259,44 @@ const ProfessionalPage = ({ setCurrentPage }) => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 relative z-10 bg-white dark:bg-slate-900">
+      <section
+        id="skills"
+        className="py-20 relative z-10 bg-white dark:bg-slate-900"
+      >
         <div className="max-w-6xl mx-auto px-6">
-          <div className={`transform transition-all duration-1000 ${isVisible.skills ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div
+            className={`transform transition-all duration-1000 ${isVisible.skills ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-gray-900 dark:text-slate-100">
               Skills & Technologies
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {skills.map((skill, index) => (
-                <div 
+                <div
                   key={skill.name}
                   className="bg-white dark:bg-slate-800 rounded-lg p-6 border border-gray-200 dark:border-slate-600 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="text-indigo-600 dark:text-indigo-400">{skill.icon}</div>
-                    <h3 className="text-lg font-medium text-gray-900 dark:text-slate-100">{skill.name}</h3>
+                    <div className="text-indigo-600 dark:text-indigo-400">
+                      {skill.icon}
+                    </div>
+                    <h3 className="text-lg font-medium text-gray-900 dark:text-slate-100">
+                      {skill.name}
+                    </h3>
                   </div>
                   <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2">
-                    <div 
+                    <div
                       className="bg-indigo-600 dark:bg-indigo-500 h-2 rounded-full transition-all duration-1000"
-                      style={{ 
-                        width: isVisible.skills ? `${skill.level}%` : '0%',
-                        transitionDelay: `${index * 100}ms`
+                      style={{
+                        width: isVisible.skills ? `${skill.level}%` : "0%",
+                        transitionDelay: `${index * 100}ms`,
                       }}
                     />
                   </div>
-                  <div className="text-right text-sm text-gray-500 dark:text-slate-400 mt-2">{skill.level}%</div>
+                  <div className="text-right text-sm text-gray-500 dark:text-slate-400 mt-2">
+                    {skill.level}%
+                  </div>
                 </div>
               ))}
             </div>
@@ -239,32 +305,48 @@ const ProfessionalPage = ({ setCurrentPage }) => {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 relative z-10 bg-gray-50 dark:bg-slate-800">
+      <section
+        id="experience"
+        className="py-20 relative z-10 bg-gray-50 dark:bg-slate-800"
+      >
         <div className="max-w-6xl mx-auto px-6">
-          <div className={`transform transition-all duration-1000 ${isVisible.experience ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div
+            className={`transform transition-all duration-1000 ${isVisible.experience ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-gray-900 dark:text-slate-100">
               Experience
             </h2>
             <div className="space-y-8">
               {experience.map((job, index) => (
-                <div 
+                <div
                   key={index}
                   className="bg-white dark:bg-slate-700 rounded-lg p-8 border border-gray-200 dark:border-slate-600 shadow-sm hover:shadow-md transition-all duration-300"
                 >
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <div>
-                      <h3 className="text-2xl font-medium text-gray-900 dark:text-slate-100">{job.title}</h3>
-                      <p className="text-xl text-gray-600 dark:text-slate-300">{job.company}</p>
-                      <p className="text-gray-500 dark:text-slate-400">{job.location}</p>
+                      <h3 className="text-2xl font-medium text-gray-900 dark:text-slate-100">
+                        {job.title}
+                      </h3>
+                      <p className="text-xl text-gray-600 dark:text-slate-300">
+                        {job.company}
+                      </p>
+                      <p className="text-gray-500 dark:text-slate-400">
+                        {job.location}
+                      </p>
                     </div>
                     <div className="text-indigo-600 dark:text-indigo-400 font-medium mt-2 md:mt-0">
                       {job.period}
                     </div>
                   </div>
-                  <p className="text-gray-600 dark:text-slate-300 mb-4">{job.description}</p>
+                  <p className="text-gray-600 dark:text-slate-300 mb-4">
+                    {job.description}
+                  </p>
                   <ul className="space-y-2">
                     {job.highlights.map((highlight, i) => (
-                      <li key={i} className="flex items-start gap-3 text-gray-600 dark:text-slate-300">
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-gray-600 dark:text-slate-300"
+                      >
                         <div className="w-2 h-2 bg-indigo-600 dark:bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
                         {highlight}
                       </li>
@@ -281,18 +363,25 @@ const ProfessionalPage = ({ setCurrentPage }) => {
       <ProjectsSection isVisible={isVisible} />
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 relative z-10 bg-gray-50 dark:bg-slate-800">
+      <section
+        id="contact"
+        className="py-20 relative z-10 bg-gray-50 dark:bg-slate-800"
+      >
         <div className="max-w-4xl mx-auto px-6">
-          <div className={`transform transition-all duration-1000 ${isVisible.contact ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div
+            className={`transform transition-all duration-1000 ${isVisible.contact ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+          >
             <h2 className="text-4xl md:text-5xl font-light mb-12 text-center text-gray-900 dark:text-slate-100">
               Let's Connect
             </h2>
             <div className="text-center space-y-8">
               <p className="text-xl text-gray-600 dark:text-slate-300 max-w-2xl mx-auto">
-                I'm always interested in discussing new opportunities, innovative projects, or just talking about technology. Feel free to reach out!
+                I'm always interested in discussing new opportunities,
+                innovative projects, or just talking about technology. Feel free
+                to reach out!
               </p>
               <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-                <a 
+                <a
                   href="mailto:sasingudipati@gmail.com"
                   className="flex items-center gap-3 px-8 py-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
@@ -315,7 +404,9 @@ const ProfessionalPage = ({ setCurrentPage }) => {
 
       {/* Footer */}
       <footer className="py-8 text-center text-gray-500 dark:text-slate-400 border-t border-gray-200 dark:border-slate-600 relative z-10 bg-white dark:bg-slate-900">
-        <p>&copy; 2025 Sasin Gudipati. Built with React & passion for clean code.</p>
+        <p>
+          &copy; 2025 Sasin Gudipati. Built with React & passion for clean code.
+        </p>
       </footer>
     </div>
   );
