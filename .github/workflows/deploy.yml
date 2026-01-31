@@ -4,6 +4,10 @@ on:
   push:
     branches: [ main ]
 
+  schedule:
+    # Runs every Monday at 09:00 UTC (adjust as you want)
+    - cron: "0 9 * * 1"
+
 permissions:
   contents: read
   pages: write
@@ -15,30 +19,41 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      
+
+    # ✅ Bi-weekly guard: only run on even ISO week numbers
+    - name: Bi-weekly guard
+      if: github.event_name == 'schedule'
+      run: |
+        WEEK=$(date -u +%V)
+        echo "ISO week: $WEEK"
+        if [ $((WEEK % 2)) -ne 0 ]; then
+          echo "Skipping deploy on odd week $WEEK"
+          exit 0
+        fi
+
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        
+
     - name: Install dependencies
       run: npm install
-      
+
     - name: Build React app
       run: npm run build
-      
+
     - name: Setup Pages
       uses: actions/configure-pages@v4
-      
+
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
         path: './build'
-        
+
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
