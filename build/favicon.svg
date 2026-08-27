@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="accent" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d34d92"/>
+      <stop offset="0.5" stop-color="#9a52e5"/>
+      <stop offset="1" stop-color="#4b7fe8"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#1d1d1f"/>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="none" stroke="url(#accent)" stroke-width="4"/>
+  <text x="32" y="39" fill="#fff" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">SG</text>
+</svg>
