@@ -4,7 +4,7 @@ const PageTransition = ({ isActive, direction }) => {
   return (
     <>
       {/* CSS for spiral animation */}
-      <style jsx>{`
+      <style>{`
         .spiral-enter {
           clip-path: circle(0% at 50% 50%);
         }
