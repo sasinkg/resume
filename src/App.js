@@ -15,20 +15,19 @@ const App = () => {
     setTransitionDirection(newPage);
     setIsTransitioning(true);
     
-    // Wait for spiral animation to complete
+    // Swap pages at the midpoint of the soft crossfade.
     setTimeout(() => {
       setCurrentPage(newPage);
-      // Keep transition active briefly to show the new page emerging
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 300);
-    }, 800);
+      }, 180);
+    }, 340);
   };
 
   return (
     <ThemeProvider>
       {/* Main content */}
-      <div className={`transition-all duration-500 ${isTransitioning ? 'filter blur-sm scale-105' : ''}`}>
+      <div className={`mode-content ${isTransitioning ? 'is-transitioning' : ''}`}>
         {currentPage === 'creative' ? (
           <CreativePage setCurrentPage={handlePageTransition} />
         ) : (
@@ -36,7 +35,6 @@ const App = () => {
         )}
       </div>
 
-      {/* Spiral transition overlay */}
       <PageTransition 
         isActive={isTransitioning} 
         direction={transitionDirection}
