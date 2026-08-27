@@ -10,6 +10,7 @@ import {
   Zap,
   Database,
   Sparkles,
+  Phone,
 } from "lucide-react";
 import ProjectsSection from "./ProjectsSection";
 import ThemeToggle from "./ThemeToggle";
@@ -42,30 +43,33 @@ const ProfessionalPage = ({ setCurrentPage }) => {
   };
 
   const skills = [
-    { name: "React.js", level: 95, icon: <Code className="w-5 h-5" /> },
+    { name: "JavaScript / TypeScript", level: 95, icon: <Code className="w-5 h-5" /> },
     {
-      name: "JavaScript/TypeScript",
-      level: 90,
+      name: "React.js / Node.js",
+      level: 92,
       icon: <Code className="w-5 h-5" />,
     },
-    { name: "Java", level: 80, icon: <Cpu className="w-5 h-5" /> },
-    { name: "Python", level: 75, icon: <Database className="w-5 h-5" /> },
-    { name: "C/C++", level: 85, icon: <Zap className="w-5 h-5" /> },
-    { name: "Rust", level: 70, icon: <Cpu className="w-5 h-5" /> },
+    { name: "Python / Java", level: 88, icon: <Database className="w-5 h-5" /> },
+    { name: "Rust", level: 85, icon: <Cpu className="w-5 h-5" /> },
+    { name: "C / C++", level: 85, icon: <Zap className="w-5 h-5" /> },
+    { name: "SQL / Firebase", level: 82, icon: <Database className="w-5 h-5" /> },
   ];
 
   const experience = [
     {
-      title: "Software Engineer 2",
-      company: "Boeing",
+      title: "Software Engineer II (Full-stack)",
+      company: "Boeing Co.",
       location: "Seattle, WA",
       period: "February 2023 - Present",
       description:
-        "Enhanced JavaScript React.js simulation apps, automated CI/CD pipelines reducing release time from 2 days to 30 minutes, and engineered full-stack Java solutions for Virtual Flight Deck systems.",
+        "Building and modernizing high-reliability flight deck simulation systems while leading delivery coordination across avionics, UI, and simulation teams.",
       highlights: [
-        "Cut simulation build expenditure by 4% through recursion-based algorithms",
-        "Improved VFD button response time from 1ms to 0.8ms",
-        "Developed flight deck panels using Rust, Java, and C++",
+        "Served as Scrum Master for the Virtual Flight Deck modernization program, leading sprint planning, delivery timelines, and cross-team coordination; built a code review bot and automated release notes and documentation reports.",
+        "Led a beta Virtual Flight Deck rebuild using TypeScript, React, Rust, and SQL, including panel layout management, an in-house SVG editor, and simulation debugging tools; cut simulation-to-frontend response time by 80%, from 900ms to 180ms.",
+        "Built a Python GUI that simulates flight deck monitors over TUIO, enabling at-home testing and Playwright end-to-end testing in CI/CD.",
+        "Reduced release cycles from two days to 30 minutes by automating CI/CD for Java, C#, and Python tools and creating export, build-health, and branch-summary tooling.",
+        "Resolved a timing defect affecting 40% of cockpit controls with a full-stack Java fix, reducing response latency from 1.0ms to 0.6ms.",
+        "Modernized legacy Fortran and C++ simulation models in Rust and Python, eliminating key crash conditions and improving flight deck input latency by 20%.",
       ],
     },
     {
@@ -74,11 +78,11 @@ const ProfessionalPage = ({ setCurrentPage }) => {
       location: "Kansas City, KS",
       period: "May 2022 - August 2022",
       description:
-        "Integrated Vulkan-enabled drivers into Garmin In-Flight Display 3, resolved 1500 coverage holes, and developed Python tools saving engineers 50% time.",
+        "Worked on graphics infrastructure and developer tooling for Garmin's certified in-flight display systems.",
       highlights: [
-        "Successfully transitioned graphics from OpenGL to Vulkan API",
-        "Designed graphical simulation adhering to Vulkan standards",
-        "Developed automated function sorting tools",
+        "Integrated the IMG-BXS-4-64 Vulkan graphics driver into Garmin's in-flight display, resolving 1,500 code coverage issues and meeting FAA certification standards.",
+        "Developed a custom graphics simulation environment aligned with Vulkan API specifications and GPU rendering pipelines.",
+        "Created a Python executable that organized hundreds of functions per file, cutting manual effort by 50%.",
       ],
     },
   ];
@@ -99,6 +103,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
                   "about",
                   "skills",
                   "experience",
+                  "education",
                   "projects",
                   "contact",
                 ].map((section) => (
@@ -137,7 +142,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
               Software Engineer
             </p>
             <p className="text-lg md:text-xl mb-8 text-gray-500 dark:text-slate-400">
-              Full-Stack Development • Graphics Programming • Embedded Systems
+              Systems Performance • Developer Tooling • High-Reliability Systems
             </p>
             <div className="flex items-center justify-center gap-2 mb-12 text-gray-500 dark:text-slate-400">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -170,7 +175,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
                 Get In Touch
               </button>
               <a
-                href={`${process.env.PUBLIC_URL}/resume.pdf`}
+                href={`${process.env.PUBLIC_URL}/Resume.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-3 border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 justify-center"
@@ -214,21 +219,20 @@ const ProfessionalPage = ({ setCurrentPage }) => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <p className="text-lg text-gray-600 dark:text-slate-300 leading-relaxed">
-                  I'm a passionate Software Engineer with expertise spanning web
-                  development, graphics programming, and embedded systems.
-                  Currently working at Boeing, I specialize in React.js
-                  applications, automation, and performance optimization.
+                  I'm a software engineer specializing in systems performance
+                  and developer tooling for simulation and high-reliability
+                  systems. I work primarily in TypeScript, Python, and Rust.
                 </p>
                 <p className="text-lg text-gray-600 dark:text-slate-300 leading-relaxed">
-                  My experience includes everything from enhancing flight
-                  simulation systems to developing engaging web applications. I
-                  love tackling complex technical challenges and creating
-                  efficient, scalable solutions.
+                  At Boeing and Garmin, I've improved automation, reliability,
+                  and simulation fidelity. I'm passionate about modernizing
+                  legacy systems, automating deployment, and building efficient,
+                  maintainable software.
                 </p>
                 <div className="grid grid-cols-2 gap-4 pt-4">
                   <div className="text-center p-6 bg-white dark:bg-slate-700 rounded-lg shadow-sm border border-gray-200 dark:border-slate-600">
                     <div className="text-3xl font-light text-indigo-600 dark:text-indigo-400">
-                      2+
+                      3+
                     </div>
                     <div className="text-sm text-gray-500 dark:text-slate-400">
                       Years Experience
@@ -300,6 +304,11 @@ const ProfessionalPage = ({ setCurrentPage }) => {
                 </div>
               ))}
             </div>
+            <p className="mt-10 text-center text-gray-600 dark:text-slate-300 leading-relaxed max-w-4xl mx-auto">
+              JavaScript, TypeScript, Python, Java, Rust, C/C++, SQL, Swift,
+              HTML, CSS, Assembly (LC-3), SystemVerilog, React.js, Node.js,
+              Mantine, Chakra UI, and Firebase
+            </p>
           </div>
         </div>
       </section>
@@ -359,6 +368,26 @@ const ProfessionalPage = ({ setCurrentPage }) => {
         </div>
       </section>
 
+      {/* Education Section */}
+      <section id="education" className="py-20 relative z-10 bg-white dark:bg-slate-900">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-gray-900 dark:text-slate-100">Education</h2>
+          <div className="max-w-3xl mx-auto bg-gray-50 dark:bg-slate-800 rounded-lg p-8 border border-gray-200 dark:border-slate-600 shadow-sm">
+            <div className="flex flex-col md:flex-row md:justify-between gap-4">
+              <div>
+                <h3 className="text-2xl font-medium text-gray-900 dark:text-slate-100">Bachelor of Science in Electrical Engineering</h3>
+                <p className="text-lg text-indigo-600 dark:text-indigo-400">Minor in Computer Science</p>
+                <p className="mt-2 text-gray-600 dark:text-slate-300">University of Illinois Urbana-Champaign · Grainger College of Engineering</p>
+              </div>
+              <div className="md:text-right text-gray-600 dark:text-slate-300 whitespace-nowrap">
+                <p>2019 – 2022</p>
+                <p>GPA: 3.6</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
       <ProjectsSection isVisible={isVisible} />
 
@@ -388,13 +417,17 @@ const ProfessionalPage = ({ setCurrentPage }) => {
                   <Mail className="w-5 h-5" />
                   sasingudipati@gmail.com
                 </a>
+                <a href="tel:+14254433500" className="flex items-center gap-2 text-gray-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400">
+                  <Phone className="w-5 h-5" />
+                  425 443 3500
+                </a>
                 <div className="flex gap-4">
-                  <button className="p-4 bg-white dark:bg-slate-700 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-600 transition-all duration-300 transform hover:scale-110 border border-gray-200 dark:border-slate-600 shadow-sm">
+                  <a href="https://github.com/sasinkg" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" className="p-4 bg-white dark:bg-slate-700 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-600 transition-all duration-300 transform hover:scale-110 border border-gray-200 dark:border-slate-600 shadow-sm">
                     <Github className="w-6 h-6 text-gray-600 dark:text-slate-300" />
-                  </button>
-                  <button className="p-4 bg-white dark:bg-slate-700 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-600 transition-all duration-300 transform hover:scale-110 border border-gray-200 dark:border-slate-600 shadow-sm">
+                  </a>
+                  <a href="https://www.linkedin.com/in/sasingudipati/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" className="p-4 bg-white dark:bg-slate-700 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-600 transition-all duration-300 transform hover:scale-110 border border-gray-200 dark:border-slate-600 shadow-sm">
                     <Linkedin className="w-6 h-6 text-gray-600 dark:text-slate-300" />
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -405,7 +438,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
       {/* Footer */}
       <footer className="py-8 text-center text-gray-500 dark:text-slate-400 border-t border-gray-200 dark:border-slate-600 relative z-10 bg-white dark:bg-slate-900">
         <p>
-          &copy; 2025 Sasin Gudipati. Built with React & passion for clean code.
+          &copy; {new Date().getFullYear()} Sasin Gudipati. Built with React & passion for clean code.
         </p>
       </footer>
     </div>
