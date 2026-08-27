@@ -99,14 +99,14 @@ const ProfessionalPage = ({ setCurrentPage }) => {
           <div className="hero-glow" aria-hidden="true" />
           <div className={`relative mx-auto grid w-full max-w-6xl items-end gap-14 lg:grid-cols-[1fr_0.72fr] ${reveal("hero")}`}>
             <div>
-              <p className="eyebrow mb-7"><span className="status-dot" /> Seattle, Washington</p>
-              <h1 className="max-w-4xl text-[clamp(3.6rem,9vw,7.8rem)] font-semibold leading-[0.88] tracking-[-0.065em]">
-                Software engineer<br />building reliable systems<br /><span className="gradient-text">and useful tools.</span>
+              <p className="eyebrow mb-7"><span className="status-dot" /> Software Engineer · Seattle, Washington</p>
+              <h1 className="max-w-4xl text-[clamp(4.4rem,9vw,8rem)] font-semibold leading-[0.88] tracking-[-0.065em]">
+                Sasin<br /><span className="gradient-text">Gudipati.</span>
               </h1>
             </div>
             <div className="pb-2 lg:pb-3">
               <p className="mb-8 max-w-xl text-xl leading-relaxed tracking-[-0.025em] text-[#515154] md:text-2xl dark:text-[#b6b6bb]">
-                I'm Sasin, a software engineer focused on systems performance, developer tooling, and reliable simulation software.
+                Software engineer focused on systems performance, developer tooling, and reliable simulation software.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="#projects" className="button-primary inline-flex items-center gap-2 px-5 py-3">View my work <ArrowDownRight size={17} /></a>
