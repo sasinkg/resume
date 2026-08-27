@@ -1,46 +1,36 @@
 import React from "react";
-import { ExternalLink, Film, MessageCircle, Table2, Trophy, Users } from "lucide-react";
+import { ArrowUpRight, Film, MessageCircle, Table2, Trophy, Users } from "lucide-react";
 
 const projects = [
-  {
-    title: "Blurb",
-    icon: MessageCircle,
-    url: "https://github.com/sasinkg/blurb",
-    technologies: ["Swift", "SwiftUI", "Firebase", "iOS"],
-    status: "In Development",
-    featured: true,
-    description:
-      "A private, group-based social app that turns one daily prompt into meaningful conversations—from casual check-ins and deeper reflections to seasonal moments, trivia, and optional birthday questions. Designed with polished Apple-native interactions, Liquid Glass styling, group feeds, streaks, badges, and monthly reflection reports. The MVP is in development, with Firebase planned for authentication, groups, and real-time posts.",
-  },
-  { title: "What Are They In?", icon: Film, url: "https://what-are-they-in-2.vercel.app/", technologies: ["TypeScript", "React.js", "Neon"], description: "Ever watch a movie and wonder where you know an actor from? Search for actors and build a visual tree of everyone you've watched over time." },
-  { title: "Premier League Challenge", icon: Table2, url: "https://premier-league-challenge.web.app/", technologies: ["TypeScript", "React.js", "Vite"], description: "A web game for predicting the Premier League table and comparing results with friends." },
-  { title: "Am I a Casual?", icon: Trophy, url: "https://sasinkg.github.io/am-i-a-casual/", technologies: ["TypeScript", "React.js", "Mantine"], description: "A responsive daily sports trivia experience with rotating questions, answer validation, and real-time scoring." },
-  { title: "ourmind", icon: Users, url: "https://github.com/sasinkg/ourmind", technologies: ["TypeScript", "React.js", "Chakra UI", "Firebase"], description: "A social journaling app where groups share daily responses and track reflection habits together, with authentication and real-time cross-device syncing." },
+  { title: "Blurb", icon: MessageCircle, url: "https://github.com/sasinkg/blurb", technologies: ["SwiftUI", "Firebase", "iOS"], status: "Building now", featured: true, description: "A private social app that gives friend groups one thoughtful prompt a day. Designed with Apple-native interactions, group feeds, streaks, badges, and monthly reflection reports." },
+  { title: "What Are They In?", icon: Film, url: "https://what-are-they-in-2.vercel.app/", technologies: ["TypeScript", "React", "Neon"], description: "Search for actors and map the films and shows where you've seen them into a visual tree that grows over time." },
+  { title: "Premier League Challenge", icon: Table2, url: "https://premier-league-challenge.web.app/", technologies: ["TypeScript", "React", "Vite"], description: "A social prediction game for guessing the final Premier League table and comparing results with friends." },
+  { title: "Am I a Casual?", icon: Trophy, url: "https://sasinkg.github.io/am-i-a-casual/", technologies: ["TypeScript", "React", "Mantine"], description: "Responsive daily sports trivia with rotating questions, answer validation, and real-time scoring." },
+  { title: "ourmind", icon: Users, url: "https://github.com/sasinkg/ourmind", technologies: ["React", "Firebase", "Chakra UI"], description: "A social journaling app where groups share daily responses and track reflection habits across devices." },
 ];
 
 const ProjectsSection = ({ isVisible }) => (
-  <section id="projects" className="py-20 relative z-10 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900">
-    <div className="max-w-6xl mx-auto px-6">
-      <div className={`transform transition-all duration-1000 ${isVisible.projects ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-gray-900 dark:text-slate-100">Featured Projects</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map(({ title, icon: Icon, url, technologies, status, featured, description }) => (
-            <article key={title} className={`bg-white dark:bg-slate-800/60 dark:backdrop-blur-sm rounded-lg p-7 border shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group ${featured ? "md:col-span-2 border-indigo-300 dark:border-indigo-500/60" : "border-gray-200 dark:border-slate-600/50"}`}>
-              <div className="flex items-center gap-3 mb-4">
-                <Icon className="w-7 h-7 text-indigo-600 dark:text-indigo-400" />
-                <h3 className="text-2xl font-medium text-gray-900 dark:text-slate-100">{title}</h3>
-                {status && <span className="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-500/30 text-indigo-700 dark:text-indigo-200 rounded-full">{status}</span>}
-              </div>
-              <p className="text-gray-600 dark:text-slate-300 mb-5 leading-relaxed">{description}</p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {technologies.map((technology) => <span key={technology} className="px-3 py-1 bg-gray-100 dark:bg-slate-700/70 text-gray-700 dark:text-slate-300 rounded-full text-sm border border-gray-200 dark:border-slate-600">{technology}</span>)}
-              </div>
-              <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors font-medium">
-                <ExternalLink className="w-4 h-4" /> View Project
-              </a>
-            </article>
-          ))}
-        </div>
+  <section id="projects" className="section-wrap px-6 py-24 md:px-10 md:py-32">
+    <div className={`mx-auto max-w-6xl reveal ${isVisible.projects ? "is-visible" : ""}`}>
+      <div className="section-heading">
+        <p className="eyebrow">Selected work</p>
+        <h2 className="section-title max-w-3xl">Ideas made useful, from flight decks to friend groups.</h2>
+      </div>
+      <div className="mt-16 grid gap-5 md:grid-cols-2">
+        {projects.map(({ title, icon: Icon, url, technologies, status, featured, description }) => (
+          <a key={title} href={url} target="_blank" rel="noopener noreferrer" className={`project-card group flex min-h-[310px] flex-col p-7 md:p-9 ${featured ? "featured-project md:col-span-2 md:min-h-[370px]" : ""}`}>
+            <div className="flex items-start justify-between">
+              <span className="project-icon"><Icon size={22} /></span>
+              <span className="project-arrow"><ArrowUpRight size={19} /></span>
+            </div>
+            <div className="mt-auto max-w-3xl">
+              {status && <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#9c3cff]">{status}</p>}
+              <h3 className={`font-semibold tracking-[-0.04em] ${featured ? "text-4xl md:text-5xl" : "text-3xl"}`}>{title}</h3>
+              <p className="mt-4 max-w-2xl leading-relaxed text-[#626266] dark:text-[#b6b6bb]">{description}</p>
+              <div className="mt-6 flex flex-wrap gap-2">{technologies.map((technology) => <span key={technology} className="tag">{technology}</span>)}</div>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
