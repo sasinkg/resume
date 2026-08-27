@@ -62,7 +62,7 @@ const CreativePage = ({ setCurrentPage }) => {
             <div>
               <p className="creative-kicker mb-7"><Sparkles size={14} /> Off the clock, on the record</p>
               <h1 className="creative-title max-w-5xl text-[clamp(4.3rem,11vw,9.5rem)] font-black leading-[.79] tracking-[-.075em]">
-                Serious about<br /><span className="creative-gradient-text">making stuff.</span>
+                Serious about<br /><span className="creative-gradient-text">making weird stuff.</span>
               </h1>
             </div>
             <div className="lg:pb-4">

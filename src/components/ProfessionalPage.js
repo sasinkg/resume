@@ -101,7 +101,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
             <div>
               <p className="eyebrow mb-7"><span className="status-dot" /> Seattle, Washington</p>
               <h1 className="max-w-4xl text-[clamp(3.6rem,9vw,7.8rem)] font-semibold leading-[0.88] tracking-[-0.065em]">
-                Building tools<br />that make complex<br /><span className="gradient-text">feel simple.</span>
+                Software engineer<br />building reliable systems<br /><span className="gradient-text">and useful tools.</span>
               </h1>
             </div>
             <div className="pb-2 lg:pb-3">
