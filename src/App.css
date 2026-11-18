@@ -164,13 +164,28 @@ a:focus-visible,button:focus-visible { outline: 3px solid var(--accent); outline
 .resume-sparkles span:nth-child(4) { bottom: 5%; right: -9%; font-size: 1.25rem; }
 
 .resume-headshot {
+  --shape-x: var(--portrait-x, 0%);
+  --shape-y: var(--portrait-y, 0%);
   width: 100%;
   height: auto;
   aspect-ratio: 1;
   background: #f5f0e9;
-  border-radius: 50%;
+  border-radius:
+    calc(43% + var(--shape-x)) calc(57% - var(--shape-x))
+    calc(46% - var(--shape-x)) calc(54% + var(--shape-x)) /
+    calc(56% + var(--shape-y)) calc(45% + var(--shape-y))
+    calc(55% - var(--shape-y)) calc(44% - var(--shape-y));
   object-fit: cover;
   object-position: center 38%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .resume-headshot { transition: border-radius 300ms ease-out; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-headshot { --shape-x: 0%; --shape-y: 0%; }
+  .resume-sparkles { transform: none; }
 }
 
 .resume-profile-links,

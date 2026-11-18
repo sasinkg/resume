@@ -55,31 +55,39 @@ const skillGroups = [
 ];
 
 const ProfessionalPage = ({ setCurrentPage }) => {
-  const sparkles = useRef(null);
+  const portrait = useRef(null);
 
-  const moveSparkles = (event) => {
+  const movePortrait = (event) => {
     if (event.pointerType !== "mouse" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const bounds = event.currentTarget.getBoundingClientRect();
-    sparkles.current.style.setProperty("--pointer-x", `${48 * ((event.clientX - bounds.left) / bounds.width - 0.5)}px`);
-    sparkles.current.style.setProperty("--pointer-y", `${48 * ((event.clientY - bounds.top) / bounds.height - 0.5)}px`);
+    const image = portrait.current;
+    const frame = image.getBoundingClientRect();
+    const horizontalWeight = Math.max(-1, Math.min(1, (event.clientX - frame.left - frame.width / 2) / frame.width));
+    const verticalWeight = Math.max(-1, Math.min(1, (event.clientY - frame.top - frame.height / 2) / frame.height));
+
+    image.style.setProperty("--portrait-x", `${horizontalWeight * 14}%`);
+    image.style.setProperty("--portrait-y", `${verticalWeight * 14}%`);
+    image.style.setProperty("--pointer-x", `${48 * ((event.clientX - bounds.left) / bounds.width - 0.5)}px`);
+    image.style.setProperty("--pointer-y", `${48 * ((event.clientY - bounds.top) / bounds.height - 0.5)}px`);
   };
 
-  const resetSparkles = () => {
-    sparkles.current.style.removeProperty("--pointer-x");
-    sparkles.current.style.removeProperty("--pointer-y");
+  const resetPortrait = () => {
+    for (const variable of ["--portrait-x", "--portrait-y", "--pointer-x", "--pointer-y"]) {
+      portrait.current.style.removeProperty(variable);
+    }
   };
 
   return (
     <main className="resume-layout">
-      <header className="resume-profile" onPointerMove={moveSparkles} onPointerLeave={resetSparkles}>
+      <header className="resume-profile" onPointerMove={movePortrait} onPointerLeave={resetPortrait}>
         <div className="resume-profile-inner">
           <div>
             <h1>Sasin <span>Gudipati</span></h1>
             <p className="mt-3 resume-profile-location">Software Engineer · Seattle, WA</p>
           </div>
-          <div className="resume-portrait">
-            <div className="resume-sparkles" aria-hidden="true" ref={sparkles}>
+          <div className="resume-portrait" ref={portrait}>
+            <div className="resume-sparkles" aria-hidden="true">
               <span>✦</span><span>✧</span><span>·</span><span>✦</span>
             </div>
             <img
