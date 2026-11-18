@@ -63,11 +63,11 @@ const ProfessionalPage = ({ setCurrentPage }) => {
     const bounds = event.currentTarget.getBoundingClientRect();
     const image = portrait.current;
     const frame = image.getBoundingClientRect();
-    const horizontalWeight = Math.max(-1, Math.min(1, (event.clientX - frame.left - frame.width / 2) / frame.width));
-    const verticalWeight = Math.max(-1, Math.min(1, (event.clientY - frame.top - frame.height / 2) / frame.height));
+    const horizontalWeight = Math.max(-1, Math.min(1, (event.clientX - frame.left - frame.width / 2) / (frame.width / 2)));
+    const verticalWeight = Math.max(-1, Math.min(1, (event.clientY - frame.top - frame.height / 2) / (frame.height / 2)));
 
-    image.style.setProperty("--portrait-x", `${horizontalWeight * 14}%`);
-    image.style.setProperty("--portrait-y", `${verticalWeight * 14}%`);
+    image.style.setProperty("--portrait-x", `${horizontalWeight * 25}%`);
+    image.style.setProperty("--portrait-y", `${verticalWeight * 25}%`);
     image.style.setProperty("--pointer-x", `${48 * ((event.clientX - bounds.left) / bounds.width - 0.5)}px`);
     image.style.setProperty("--pointer-y", `${48 * ((event.clientY - bounds.top) / bounds.height - 0.5)}px`);
   };
