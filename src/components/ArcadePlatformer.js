@@ -64,6 +64,7 @@ const ArcadePlatformer = ({ stage }) => {
     const field = stage.current;
     const player = sprite.current;
     const ground = field.querySelector(".arcade-ground");
+    const secretPortal = field.querySelector(".arcade-secret-portal");
     let platforms = [];
     const keys = new Set();
     const tiles = Array.from(ground.children, (element) => ({ element, grassWear: 0, dirtWear: 0 }));
@@ -73,6 +74,8 @@ const ArcadePlatformer = ({ stage }) => {
     let magmaTop;
     let burned = false;
     let burnTimer;
+    let enteringSecret = false;
+    let secretTimer;
 
     let x = 0;
     let y = 0;
@@ -308,6 +311,25 @@ const ArcadePlatformer = ({ stage }) => {
         tile.element.classList.toggle("dirt-broken", tile.dirtWear >= collapseAfter);
       }
 
+      if (secretPortal && !enteringSecret) {
+        const portalBounds = secretPortal.getBoundingClientRect();
+        const portalLeft = portalBounds.left - fieldBounds.left;
+        const portalRight = portalBounds.right - fieldBounds.left;
+        const portalTop = portalBounds.top - fieldBounds.top;
+        const portalBottom = portalBounds.bottom - fieldBounds.top;
+        const nearby = Math.hypot(x - (portalLeft + portalRight) / 2, y - (portalTop + portalBottom) / 2) < 145;
+        const inside = x + 10 > portalLeft && x - 10 < portalRight && y > portalTop && y - 32 < portalBottom;
+        secretPortal.classList.toggle("is-nearby", nearby);
+
+        if (inside) {
+          enteringSecret = true;
+          clearKeys();
+          player.classList.add("is-entering-secret");
+          secretPortal.classList.add("is-opening");
+          secretTimer = window.setTimeout(() => window.location.assign("/game/"), 520);
+        }
+      }
+
       render();
       if (x !== oldX || y !== oldY) {
         const feet = field.getBoundingClientRect().top + y;
@@ -349,8 +371,11 @@ const ArcadePlatformer = ({ stage }) => {
     return () => {
       cancelAnimationFrame(frame);
       window.clearTimeout(burnTimer);
+      window.clearTimeout(secretTimer);
       restart.current = null;
       restoreGrass();
+      secretPortal?.classList.remove("is-nearby", "is-opening");
+      player.classList.remove("is-entering-secret");
       observer.disconnect();
       mutations.disconnect();
       player.removeEventListener("keydown", onKeyDown);

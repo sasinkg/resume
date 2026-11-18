@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#080816" />
+    <meta name="description" content="Neon Ascent — a one-level cyberpunk platform game." />
+    <title>Neon Ascent</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <canvas id="game" width="960" height="540" aria-label="Neon Ascent game canvas"></canvas>
+
+      <section id="start-screen" class="overlay active" aria-labelledby="game-title">
+        <div class="scanline-card">
+          <p class="eyebrow">SASIN // ARCADE NODE 01</p>
+          <h1 id="game-title">NEON<br /><span>ASCENT</span></h1>
+          <p class="mission">Three districts. One midnight run. Collect credits, clear the machines, and climb from the street to the sky fortress.</p>
+          <div class="controls-grid" aria-label="Game controls">
+            <span><kbd>W</kbd> jump</span>
+            <span><kbd>A</kbd><kbd>D</kbd> move</span>
+            <span><kbd>Q</kbd> fire</span>
+            <span><kbd>R</kbd> restart</span>
+          </div>
+          <button id="start-button" type="button">ENTER THE CITY</button>
+          <p class="tiny">Headphones recommended · keyboard or touch</p>
+        </div>
+      </section>
+
+      <section id="level-screen" class="overlay" aria-labelledby="level-title">
+        <div class="scanline-card compact">
+          <p class="eyebrow">DISTRICT CLEARED</p>
+          <h2 id="level-title">UPGRADE</h2>
+          <p id="level-stats" class="mission"></p>
+          <p class="upgrade-prompt">Choose one permanent upgrade</p>
+          <div class="upgrade-grid">
+            <button type="button" data-upgrade="armor"><b>ARMOR</b><span>+1 maximum health</span></button>
+            <button type="button" data-upgrade="rapid"><b>RAPID FIRE</b><span>Shoot 40% faster</span></button>
+            <button type="button" data-upgrade="thrusters"><b>THRUSTERS</b><span>Double jump</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section id="end-screen" class="overlay" aria-live="polite">
+        <div class="scanline-card compact">
+          <p id="end-eyebrow" class="eyebrow">UPLINK COMPLETE</p>
+          <h2 id="end-title">LEVEL CLEAR</h2>
+          <p id="end-stats" class="mission"></p>
+          <button id="restart-button" type="button">PLAY AGAIN</button>
+        </div>
+      </section>
+
+      <div class="touch-controls" aria-label="Touch controls">
+        <div class="touch-move">
+          <button data-key="KeyA" aria-label="Move left">◀</button>
+          <button data-key="KeyD" aria-label="Move right">▶</button>
+        </div>
+        <div class="touch-action">
+          <button data-key="KeyW" aria-label="Jump">JUMP</button>
+          <button data-key="KeyQ" aria-label="Fire">FIRE</button>
+        </div>
+      </div>
+    </main>
+    <script src="./game.js"></script>
+  </body>
+</html>

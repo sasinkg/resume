@@ -574,6 +574,57 @@ a:focus-visible,button:focus-visible { outline: 3px solid var(--accent); outline
   background: #ff9852;
   box-shadow: inset 0 -2px #e04a29;
 }
+.arcade-secret-portal {
+  position: absolute;
+  right: clamp(1.5rem, 8vw, 7rem);
+  bottom: 2px;
+  z-index: 4;
+  width: 64px;
+  height: 82px;
+  opacity: 0;
+  transform: translateY(9px);
+  transition: opacity 240ms ease, transform 240ms ease, filter 240ms ease;
+}
+.arcade-secret-door {
+  position: absolute;
+  inset: 18px 7px 0;
+  display: grid;
+  place-items: center;
+  border: 3px solid #21182e;
+  background: #1b1931;
+  color: #47f8ff;
+  font-size: 1.25rem;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 3px #30264c;
+}
+.arcade-secret-light {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  translate: -50% 0;
+  background: #ff3cac;
+  box-shadow: 0 0 0 3px #21182e, 0 0 18px #ff3cac;
+  animation: arcade-secret-blink 700ms steps(2, jump-none) infinite;
+}
+.arcade-secret-label {
+  position: absolute;
+  right: calc(100% + 8px);
+  bottom: 8px;
+  width: max-content;
+  padding: .22rem .35rem;
+  background: #21182e;
+  color: #47f8ff;
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+.arcade-secret-portal.is-nearby { opacity: 1; transform: translateY(0); filter: drop-shadow(0 0 12px #47f8ff); }
+.arcade-secret-portal.is-opening { opacity: 1; transform: scale(1.12); filter: drop-shadow(0 0 24px #ff3cac); }
+.arcade-player.is-entering-secret { animation: arcade-enter-secret 520ms steps(5, end) both; }
+@keyframes arcade-secret-blink { 50% { background: #47f8ff; box-shadow: 0 0 0 3px #21182e, 0 0 18px #47f8ff; } }
+@keyframes arcade-enter-secret { to { opacity: 0; scale: .35; } }
 .arcade-volcano-cloud {
   position: absolute;
   z-index: 1;

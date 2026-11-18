@@ -132,6 +132,11 @@ const CreativePage = ({ setCurrentPage }) => {
             <span className="arcade-volcano-smoke" />
           </div>
         </div>
+        <div className="arcade-secret-portal" aria-hidden="true">
+          <span className="arcade-secret-light" />
+          <span className="arcade-secret-door">?</span>
+          <span className="arcade-secret-label">UNKNOWN SIGNAL</span>
+        </div>
       </div>
       <div className="arcade-ground" aria-hidden="true">
         {Array.from({ length: 24 }, (_, tile) => (
