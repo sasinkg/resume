@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from "react";
-import {
-  ArrowDownRight,
-  Download,
-  Github,
-  Linkedin,
-  Mail,
-  Phone,
-  Sparkles,
-} from "lucide-react";
+import React, { useRef } from "react";
+import { Download, Github, Linkedin, Mail, Phone, Sparkles } from "lucide-react";
 import ProjectsSection from "./ProjectsSection";
 import ThemeToggle from "./ThemeToggle";
 
 const experience = [
   {
-    title: "Staff Full Stack Engineer",
+    title: "Senior Software Engineer",
     company: "General Motors · Simulation (formerly Cruise)",
+    location: "Seattle, WA",
     period: "Starting Dec 2026",
     summary: "Upcoming role on the team building simulation tools for autonomous driving validation.",
     highlights: [
@@ -62,153 +55,103 @@ const skillGroups = [
 ];
 
 const ProfessionalPage = ({ setCurrentPage }) => {
-  const [visible, setVisible] = useState({ hero: true });
+  const sparkles = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => {
-        if (entry.isIntersecting) setVisible((current) => ({ ...current, [entry.target.id]: true }));
-      }),
-      { threshold: 0.12 },
-    );
-    document.querySelectorAll("section[id]").forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
+  const moveSparkles = (event) => {
+    if (event.pointerType !== "mouse" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  const reveal = (id) => `reveal ${visible[id] ? "is-visible" : ""}`;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    sparkles.current.style.setProperty("--pointer-x", `${48 * ((event.clientX - bounds.left) / bounds.width - 0.5)}px`);
+    sparkles.current.style.setProperty("--pointer-y", `${48 * ((event.clientY - bounds.top) / bounds.height - 0.5)}px`);
+  };
+
+  const resetSparkles = () => {
+    sparkles.current.style.removeProperty("--pointer-x");
+    sparkles.current.style.removeProperty("--pointer-y");
+  };
 
   return (
-    <div className="site-shell min-h-screen overflow-hidden text-[#1d1d1f] dark:text-[#f5f5f7]">
-      <nav className="fixed inset-x-0 top-0 z-50 px-4 pt-4" aria-label="Primary navigation">
-        <div className="nav-shell mx-auto flex max-w-6xl items-center justify-between rounded-full px-4 py-2.5 md:px-5">
-          <a href="#hero" className="flex items-center gap-2.5 font-semibold tracking-[-0.02em]">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-[#1d1d1f] text-xs text-white dark:bg-white dark:text-[#1d1d1f]">SG</span>
-            <span className="hidden sm:inline">Sasin Gudipati</span>
-          </a>
-          <div className="hidden items-center gap-7 text-sm text-[#6e6e73] md:flex dark:text-[#a1a1a6]">
-            <a href="#experience" className="nav-link">Experience</a>
-            <a href="#projects" className="nav-link">Projects</a>
-            <a href="#about" className="nav-link">About</a>
+    <main className="resume-layout">
+      <header className="resume-profile" onPointerMove={moveSparkles} onPointerLeave={resetSparkles}>
+        <div className="resume-profile-inner">
+          <div>
+            <h1>Sasin <span>Gudipati</span></h1>
+            <p className="mt-3 resume-profile-location">Software Engineer · Seattle, WA</p>
           </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setCurrentPage("creative")}
-              className="creative-button inline-flex h-9 items-center gap-2 rounded-full px-2.5 lg:px-3.5"
-              aria-label="Open Creative Mode"
-              title="Creative Mode"
-            >
-              <Sparkles size={16} />
-              <span className="hidden lg:inline">Creative Mode</span>
-            </button>
-            <ThemeToggle />
-            <a href="mailto:sasingudipati@gmail.com" className="button-primary px-4 py-2 text-sm">Let's talk</a>
+          <div className="resume-portrait">
+            <div className="resume-sparkles" aria-hidden="true" ref={sparkles}>
+              <span>✦</span><span>✧</span><span>·</span><span>✦</span>
+            </div>
+            <img
+              className="resume-headshot"
+              src={`${process.env.PUBLIC_URL}/image.jpg`}
+              alt="Sasin Gudipati"
+              width="240"
+              height="240"
+            />
+          </div>
+          <div className="resume-profile-links">
+            <a href="https://github.com/sasinkg" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><Github size={20} /></a>
+            <a href="https://www.linkedin.com/in/sasingudipati/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><Linkedin size={20} /></a>
+            <a href="mailto:sasingudipati@gmail.com" aria-label="Email"><Mail size={20} /></a>
+            <a href={`${process.env.PUBLIC_URL}/Resume.pdf`} target="_blank" rel="noopener noreferrer"><Download size={18} /> Résumé</a>
           </div>
         </div>
-      </nav>
+      </header>
 
-      <main>
-        <section id="hero" className="relative flex min-h-[92vh] items-center px-6 pb-20 pt-32 md:px-10">
-          <div className={`relative mx-auto grid w-full max-w-6xl items-end gap-14 lg:grid-cols-[1fr_0.72fr] ${reveal("hero")}`}>
-            <div>
-              <p className="eyebrow mb-7"><span className="status-dot" /> Software Engineer · Seattle, Washington</p>
-              <h1 className="max-w-4xl text-[clamp(4.4rem,9vw,8rem)] font-semibold leading-[0.88] tracking-[-0.065em]">
-                Sasin<br /><span className="accent-text">Gudipati.</span>
-              </h1>
-            </div>
-            <div className="pb-2 lg:pb-3">
-              <p className="mb-8 max-w-xl text-xl leading-relaxed tracking-[-0.025em] text-[#515154] md:text-2xl dark:text-[#b6b6bb]">
-                Joining GM’s Simulation team (formerly Cruise) in December 2026 as a Staff Full Stack Engineer, building tools for autonomous driving simulation.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <a href="#projects" className="button-primary inline-flex items-center gap-2 px-5 py-3">View my work <ArrowDownRight size={17} /></a>
-                <a href={`${process.env.PUBLIC_URL}/Resume.pdf`} target="_blank" rel="noopener noreferrer" className="button-secondary inline-flex items-center gap-2 px-5 py-3"><Download size={17} /> Résumé</a>
-              </div>
-            </div>
-          </div>
-        </section>
+      <div className="resume-content">
+        <nav className="resume-toolbar" aria-label="Site controls">
+          <button type="button" onClick={() => setCurrentPage("creative")} className="creative-button inline-flex items-center gap-2 rounded-full px-3 py-2">
+            <Sparkles size={16} /> Creative Mode
+          </button>
+          <ThemeToggle />
+        </nav>
 
-        <section id="about" className="section-wrap px-6 py-24 md:px-10 md:py-32">
-          <div className={`mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.72fr_1fr] lg:items-center ${reveal("about")}`}>
-            <div className="portrait-frame mx-auto w-full max-w-md lg:mx-0">
-              <img src={`${process.env.PUBLIC_URL}/image.jpg`} alt="Sasin Gudipati" className="aspect-[4/5] w-full object-cover" />
-            </div>
-            <div>
-              <p className="eyebrow mb-5">About</p>
-              <h2 className="section-title mb-8">Software should be fast, dependable, and quietly excellent.</h2>
-              <div className="space-y-5 text-lg leading-relaxed text-[#5f5f63] dark:text-[#b6b6bb]">
-                <p>I specialize in systems performance and developer tooling for simulation and high-reliability systems, working primarily in TypeScript, Python, and Rust.</p>
-                <p>At Boeing and Garmin, I've improved automation, reliability, and simulation fidelity. I care about modernizing legacy systems and building efficient software that teams can trust.</p>
-              </div>
-              <div className="mt-10 grid grid-cols-2 gap-4">
-                <div className="metric-card"><strong>3+</strong><span>Years building production software</span></div>
-                <div className="metric-card"><strong>80%</strong><span>Faster simulation response</span></div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <section id="about" aria-labelledby="about-heading">
+          <h2 id="about-heading">About</h2>
+          <p>I’m joining General Motors’ Simulation team (formerly Cruise) in December 2026 as a <strong>Senior Software Engineer</strong>, building tools for autonomous driving simulation.</p>
+          <p>At Boeing and Garmin, I worked on simulation, developer tooling, and systems performance. I work primarily in TypeScript, Python, and Rust.</p>
 
-        <section id="experience" className="px-6 py-24 md:px-10 md:py-32">
-          <div className={`mx-auto max-w-6xl ${reveal("experience")}`}>
-            <div className="section-heading"><p className="eyebrow">Experience</p><h2 className="section-title max-w-3xl">Engineering where precision matters.</h2></div>
-            <div className="mt-16 border-t border-black/10 dark:border-white/10">
+          <div className="resume-disclosures">
+            <details id="experience">
+              <summary>Experience</summary>
               {experience.map((job) => (
-                <article key={job.company} className="experience-row grid gap-8 py-12 lg:grid-cols-[0.32fr_0.68fr]">
-                  <div>
-                    <p className="mb-2 text-sm text-[#86868b]">{job.period}</p>
-                    <h3 className="text-xl font-semibold tracking-[-0.025em]">{job.company}</h3>
-                    {job.location && <p className="mt-1 text-sm text-[#6e6e73] dark:text-[#a1a1a6]">{job.location}</p>}
-                  </div>
-                  <div>
-                    <h3 className="mb-3 text-2xl font-semibold tracking-[-0.03em]">{job.title}</h3>
-                    <p className="mb-7 max-w-3xl text-lg leading-relaxed text-[#5f5f63] dark:text-[#b6b6bb]">{job.summary}</p>
-                    <ul className="space-y-4">
-                      {job.highlights.map((item) => <li key={item} className="flex gap-4 leading-relaxed text-[#515154] dark:text-[#c7c7cc]"><span className="mt-2.5 h-1.5 w-1.5 flex-none rounded-full accent-dot" />{item}</li>)}
-                    </ul>
-                    <p className="mt-7 text-sm font-medium text-[#86868b]">{job.stack}</p>
-                  </div>
+                <article key={job.company} className="resume-job">
+                  <h3>{job.title} · {job.company}</h3>
+                  <p className="resume-meta">{job.period} · {job.location}</p>
+                  <p>{job.summary}</p>
+                  <ul className="list-disc space-y-1 pl-5">
+                    {job.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                  </ul>
+                  <p className="resume-meta">{job.stack}</p>
                 </article>
               ))}
-            </div>
+            </details>
+            <details id="education">
+              <summary>Education</summary>
+              <p className="mt-2 font-semibold">University of Illinois Urbana-Champaign</p>
+              <p>Grainger College of Engineering · B.S. Electrical Engineering · Minor in Computer Science</p>
+              <p className="resume-meta">2019–2022 · GPA 3.6</p>
+            </details>
+            <details id="skills">
+              <summary>Skills</summary>
+              <dl className="mt-2 space-y-2">
+                {skillGroups.map(({ label, values }) => (
+                  <div key={label}><dt className="font-semibold">{label}</dt><dd>{values}</dd></div>
+                ))}
+              </dl>
+            </details>
           </div>
         </section>
 
-        <ProjectsSection isVisible={visible} />
+        <ProjectsSection />
 
-        <section id="skills" className="px-6 py-24 md:px-10 md:py-32">
-          <div className={`mx-auto grid max-w-6xl gap-14 lg:grid-cols-[0.38fr_0.62fr] ${reveal("skills")}`}>
-            <div><p className="eyebrow mb-5">Toolkit</p><h2 className="section-title">Broad enough to build. Deep enough to optimize.</h2></div>
-            <div className="divide-y divide-black/10 border-y border-black/10 dark:divide-white/10 dark:border-white/10">
-              {skillGroups.map((group) => <div key={group.label} className="grid gap-3 py-7 sm:grid-cols-[0.28fr_0.72fr]"><h3 className="font-semibold">{group.label}</h3><p className="leading-relaxed text-[#6e6e73] dark:text-[#a1a1a6]">{group.values}</p></div>)}
-            </div>
-          </div>
-        </section>
-
-        <section id="education" className="section-wrap px-6 py-24 md:px-10 md:py-32">
-          <div className={`mx-auto max-w-6xl ${reveal("education")}`}>
-            <p className="eyebrow mb-8">Education</p>
-            <div className="education-card grid gap-7 p-7 md:grid-cols-[1fr_auto] md:p-10">
-              <div><h2 className="text-2xl font-semibold tracking-[-0.03em] md:text-3xl">B.S. Electrical Engineering</h2><p className="mt-2 text-lg accent-text font-semibold">Minor in Computer Science</p><p className="mt-5 text-[#6e6e73] dark:text-[#a1a1a6]">University of Illinois Urbana-Champaign · Grainger College of Engineering</p></div>
-              <div className="md:text-right"><p>2019 — 2022</p><p className="mt-1 text-[#6e6e73] dark:text-[#a1a1a6]">GPA 3.6</p></div>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" className="px-6 py-24 md:px-10 md:py-36">
-          <div className={`contact-card relative mx-auto max-w-6xl overflow-hidden p-8 md:p-16 ${reveal("contact")}`}>
-            <div className="relative max-w-3xl"><p className="eyebrow mb-6">Let's connect</p><h2 className="section-title mb-6">Have an interesting problem? I'd love to hear about it.</h2><p className="mb-9 text-lg text-[#5f5f63] dark:text-[#b6b6bb]">Open to thoughtful conversations about software, systems, and ambitious product ideas.</p>
-              <div className="flex flex-wrap gap-3"><a href="mailto:sasingudipati@gmail.com" className="button-primary inline-flex items-center gap-2 px-5 py-3"><Mail size={17} /> Email me</a><a href="tel:+14254433500" className="button-secondary inline-flex items-center gap-2 px-5 py-3"><Phone size={17} /> 425 443 3500</a></div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer className="px-6 pb-10 md:px-10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-5 border-t border-black/10 pt-7 text-sm text-[#6e6e73] sm:flex-row sm:items-center sm:justify-between dark:border-white/10 dark:text-[#a1a1a6]">
-          <p>© {new Date().getFullYear()} Sasin Gudipati · Seattle, WA</p>
-          <div className="flex items-center gap-5"><a className="footer-link" href="https://github.com/sasinkg" target="_blank" rel="noopener noreferrer"><Github size={17} /> GitHub</a><a className="footer-link" href="https://www.linkedin.com/in/sasingudipati/" target="_blank" rel="noopener noreferrer"><Linkedin size={17} /> LinkedIn</a><button className="footer-link" onClick={() => setCurrentPage("creative")}><Sparkles size={17} /> Play</button></div>
-        </div>
-      </footer>
-    </div>
+        <footer id="contact" className="resume-contact">
+          <a href="mailto:sasingudipati@gmail.com"><Mail size={16} /> Email me</a>
+          <a href="tel:+14254433500"><Phone size={16} /> 425 443 3500</a>
+        </footer>
+      </div>
+    </main>
   );
 };
 
