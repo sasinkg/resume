@@ -13,6 +13,18 @@ import ThemeToggle from "./ThemeToggle";
 
 const experience = [
   {
+    title: "Staff Full Stack Engineer",
+    company: "General Motors · Simulation (formerly Cruise)",
+    period: "Starting Dec 2026",
+    summary: "Upcoming role on the team building simulation tools for autonomous driving validation.",
+    highlights: [
+      "Help define the technical roadmap for the Simulation Scenario Definition platform and its TypeScript and Python SDK.",
+      "Lead development of graphical tools engineers use to define traffic, environment, and sensor scenarios.",
+      "Improve Python infrastructure for scenario serialization, validation, and integration with cloud compute.",
+    ],
+    stack: "TypeScript · Python",
+  },
+  {
     title: "Software Engineer II · Full-stack",
     company: "Boeing Co.",
     location: "Seattle, WA",
@@ -106,7 +118,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
             </div>
             <div className="pb-2 lg:pb-3">
               <p className="mb-8 max-w-xl text-xl leading-relaxed tracking-[-0.025em] text-[#515154] md:text-2xl dark:text-[#b6b6bb]">
-                Software engineer focused on systems performance, developer tooling, and reliable simulation software.
+                Joining GM’s Simulation team (formerly Cruise) in December 2026 as a Staff Full Stack Engineer, building tools for autonomous driving simulation.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="#projects" className="button-primary inline-flex items-center gap-2 px-5 py-3">View my work <ArrowDownRight size={17} /></a>
@@ -140,12 +152,12 @@ const ProfessionalPage = ({ setCurrentPage }) => {
           <div className={`mx-auto max-w-6xl ${reveal("experience")}`}>
             <div className="section-heading"><p className="eyebrow">Experience</p><h2 className="section-title max-w-3xl">Engineering where precision matters.</h2></div>
             <div className="mt-16 border-t border-black/10 dark:border-white/10">
-              {experience.map((job, index) => (
+              {experience.map((job) => (
                 <article key={job.company} className="experience-row grid gap-8 py-12 lg:grid-cols-[0.32fr_0.68fr]">
                   <div>
                     <p className="mb-2 text-sm text-[#86868b]">{job.period}</p>
                     <h3 className="text-xl font-semibold tracking-[-0.025em]">{job.company}</h3>
-                    <p className="mt-1 text-sm text-[#6e6e73] dark:text-[#a1a1a6]">{job.location}</p>
+                    {job.location && <p className="mt-1 text-sm text-[#6e6e73] dark:text-[#a1a1a6]">{job.location}</p>}
                   </div>
                   <div>
                     <h3 className="mb-3 text-2xl font-semibold tracking-[-0.03em]">{job.title}</h3>
