@@ -24,7 +24,7 @@ const ProjectsSection = ({ isVisible }) => (
               <span className="project-arrow"><ArrowUpRight size={19} /></span>
             </div>
             <div className="mt-auto max-w-3xl">
-              {status && <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#9c3cff]">{status}</p>}
+              {status && <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] accent-text">{status}</p>}
               <h3 className={`font-semibold tracking-[-0.04em] ${featured ? "text-4xl md:text-5xl" : "text-3xl"}`}>{title}</h3>
               <p className="mt-4 max-w-2xl leading-relaxed text-[#626266] dark:text-[#b6b6bb]">{description}</p>
               <div className="mt-6 flex flex-wrap gap-2">{technologies.map((technology) => <span key={technology} className="tag">{technology}</span>)}</div>

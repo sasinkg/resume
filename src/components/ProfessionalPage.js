@@ -108,12 +108,11 @@ const ProfessionalPage = ({ setCurrentPage }) => {
 
       <main>
         <section id="hero" className="relative flex min-h-[92vh] items-center px-6 pb-20 pt-32 md:px-10">
-          <div className="hero-glow" aria-hidden="true" />
           <div className={`relative mx-auto grid w-full max-w-6xl items-end gap-14 lg:grid-cols-[1fr_0.72fr] ${reveal("hero")}`}>
             <div>
               <p className="eyebrow mb-7"><span className="status-dot" /> Software Engineer · Seattle, Washington</p>
               <h1 className="max-w-4xl text-[clamp(4.4rem,9vw,8rem)] font-semibold leading-[0.88] tracking-[-0.065em]">
-                Sasin<br /><span className="gradient-text">Gudipati.</span>
+                Sasin<br /><span className="accent-text">Gudipati.</span>
               </h1>
             </div>
             <div className="pb-2 lg:pb-3">
@@ -163,7 +162,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
                     <h3 className="mb-3 text-2xl font-semibold tracking-[-0.03em]">{job.title}</h3>
                     <p className="mb-7 max-w-3xl text-lg leading-relaxed text-[#5f5f63] dark:text-[#b6b6bb]">{job.summary}</p>
                     <ul className="space-y-4">
-                      {job.highlights.map((item) => <li key={item} className="flex gap-4 leading-relaxed text-[#515154] dark:text-[#c7c7cc]"><span className="mt-2.5 h-1.5 w-1.5 flex-none rounded-full bg-[#b64eff]" />{item}</li>)}
+                      {job.highlights.map((item) => <li key={item} className="flex gap-4 leading-relaxed text-[#515154] dark:text-[#c7c7cc]"><span className="mt-2.5 h-1.5 w-1.5 flex-none rounded-full accent-dot" />{item}</li>)}
                     </ul>
                     <p className="mt-7 text-sm font-medium text-[#86868b]">{job.stack}</p>
                   </div>
@@ -188,7 +187,7 @@ const ProfessionalPage = ({ setCurrentPage }) => {
           <div className={`mx-auto max-w-6xl ${reveal("education")}`}>
             <p className="eyebrow mb-8">Education</p>
             <div className="education-card grid gap-7 p-7 md:grid-cols-[1fr_auto] md:p-10">
-              <div><h2 className="text-2xl font-semibold tracking-[-0.03em] md:text-3xl">B.S. Electrical Engineering</h2><p className="mt-2 text-lg gradient-text font-semibold">Minor in Computer Science</p><p className="mt-5 text-[#6e6e73] dark:text-[#a1a1a6]">University of Illinois Urbana-Champaign · Grainger College of Engineering</p></div>
+              <div><h2 className="text-2xl font-semibold tracking-[-0.03em] md:text-3xl">B.S. Electrical Engineering</h2><p className="mt-2 text-lg accent-text font-semibold">Minor in Computer Science</p><p className="mt-5 text-[#6e6e73] dark:text-[#a1a1a6]">University of Illinois Urbana-Champaign · Grainger College of Engineering</p></div>
               <div className="md:text-right"><p>2019 — 2022</p><p className="mt-1 text-[#6e6e73] dark:text-[#a1a1a6]">GPA 3.6</p></div>
             </div>
           </div>
@@ -196,7 +195,6 @@ const ProfessionalPage = ({ setCurrentPage }) => {
 
         <section id="contact" className="px-6 py-24 md:px-10 md:py-36">
           <div className={`contact-card relative mx-auto max-w-6xl overflow-hidden p-8 md:p-16 ${reveal("contact")}`}>
-            <div className="contact-glow" aria-hidden="true" />
             <div className="relative max-w-3xl"><p className="eyebrow mb-6">Let's connect</p><h2 className="section-title mb-6">Have an interesting problem? I'd love to hear about it.</h2><p className="mb-9 text-lg text-[#5f5f63] dark:text-[#b6b6bb]">Open to thoughtful conversations about software, systems, and ambitious product ideas.</p>
               <div className="flex flex-wrap gap-3"><a href="mailto:sasingudipati@gmail.com" className="button-primary inline-flex items-center gap-2 px-5 py-3"><Mail size={17} /> Email me</a><a href="tel:+14254433500" className="button-secondary inline-flex items-center gap-2 px-5 py-3"><Phone size={17} /> 425 443 3500</a></div>
             </div>

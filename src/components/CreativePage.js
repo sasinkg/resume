@@ -47,22 +47,20 @@ const CreativePage = ({ setCurrentPage }) => {
           <button onClick={() => setCurrentPage("main")} className="creative-back inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold">
             <ArrowLeft size={17} /><span className="hidden sm:inline">Professional</span>
           </button>
-          <a href="#creative-hero" className="font-bold tracking-[-0.03em]">Sasin's <span className="creative-gradient-text">playground</span></a>
+          <a href="#creative-hero" className="font-bold tracking-[-0.03em]">Sasin's <span className="accent-text">playground</span></a>
           <a href="#creative-work" className="creative-action rounded-full px-4 py-2 text-sm font-semibold">Explore</a>
         </div>
       </nav>
 
       <main>
         <section id="creative-hero" className={`relative flex min-h-[94vh] items-center px-6 pb-20 pt-32 md:px-10 ${reveal("creative-hero")}`}>
-          <div className="creative-orb orb-one" aria-hidden="true" />
-          <div className="creative-orb orb-two" aria-hidden="true" />
           <div className="creative-doodle doodle-one" aria-hidden="true">✦</div>
           <div className="creative-doodle doodle-two" aria-hidden="true">●</div>
           <div className="relative mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-[1fr_.5fr] lg:items-end">
             <div>
               <p className="creative-kicker mb-7"><Sparkles size={14} /> Off the clock, on the record</p>
               <h1 className="creative-title max-w-5xl text-[clamp(4.3rem,11vw,9.5rem)] font-black leading-[.79] tracking-[-.075em]">
-                Serious about<br /><span className="creative-gradient-text">making weird stuff.</span>
+                Serious about<br /><span className="accent-text">making weird stuff.</span>
               </h1>
             </div>
             <div className="lg:pb-4">
@@ -126,7 +124,6 @@ const CreativePage = ({ setCurrentPage }) => {
 
             <div id="more" className={`mt-28 ${reveal("more")}`}>
               <div className="more-card relative overflow-hidden p-8 md:p-14">
-                <div className="more-grid" aria-hidden="true" />
                 <div className="relative grid gap-10 lg:grid-cols-[1fr_.45fr] lg:items-end"><div><p className="creative-kicker mb-6 text-white/65"><Palette size={14} /> Other cool things I do…</p><h2 className="max-w-4xl text-5xl font-black leading-[.9] tracking-[-.06em] text-white md:text-7xl">Always experimenting.<br /><span className="text-[#c8ff63]">Never quite finished.</span></h2></div><p className="text-lg leading-relaxed text-white/70">Designing, tinkering, traveling, and following curiosity wherever it happens to go next.</p></div>
               </div>
             </div>
