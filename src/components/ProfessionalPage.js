@@ -21,7 +21,7 @@ const experience = [
     title: "Software Engineer II · Full-stack",
     company: "Boeing Co.",
     location: "Seattle, WA",
-    period: "Feb 2023 — Present",
+    period: "Feb 2023 — Nov 2026",
     summary: "Modernizing high-reliability flight deck simulation systems and developer workflows across avionics, UI, and simulation teams.",
     highlights: [
       "Served as Scrum Master for the Virtual Flight Deck modernization program, leading sprint planning, delivery timelines, and cross-team coordination; built a code review bot and automated release notes and documentation reports.",

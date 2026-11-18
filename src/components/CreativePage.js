@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { ArrowLeft, ArrowUpRight, Camera, Gamepad2, Music, Palette, Play, Video } from "lucide-react";
 
 import ArcadePlatformer from "./ArcadePlatformer";
+import ArcadeAtmosphere from "./ArcadeAtmosphere";
 
 const tracks = [
   ["orange sunsets", "https://open.spotify.com/track/43Wv9YF5KtIx4p3EtXXqsU"],
@@ -19,10 +20,11 @@ const videos = [
 
 const CreativePage = ({ setCurrentPage }) => {
   const stage = useRef(null);
+  const [activeVideos, setActiveVideos] = useState({});
 
   return (
     <div ref={stage} className="arcade-shell">
-      <div className="arcade-clouds" aria-hidden="true"><span /><span /><span /></div>
+      <div className="arcade-clouds" aria-hidden="true"><span data-platform /><span data-platform /><span data-platform /></div>
       <header className="arcade-topbar arcade-container">
         <button className="arcade-exit" type="button" onClick={() => setCurrentPage("main")}>
           <ArrowLeft size={16} aria-hidden="true" /> Résumé
@@ -35,12 +37,12 @@ const CreativePage = ({ setCurrentPage }) => {
           <div className="arcade-screen" data-platform data-platform-floor>
             <div>
               <h1 id="arcade-title">
-                <span data-platform>Creative</span><br />
+                <span data-platform>Creative</span>
                 <span data-platform className="arcade-title-accent">Arcade</span>
               </h1>
               <p data-platform>Original music, photography, and travel films.</p>
             </div>
-            <div className="arcade-gamepad" data-platform aria-hidden="true"><Gamepad2 strokeWidth={1.5} /></div>
+            <div className="arcade-gamepad" data-platform aria-hidden="true"><Gamepad2 data-collision-outline strokeWidth={1.5} /></div>
           </div>
           <nav className="arcade-controls" aria-label="Explore creative work">
             <a data-platform href="#music"><Music size={17} aria-hidden="true" /> Music</a>
@@ -85,7 +87,16 @@ const CreativePage = ({ setCurrentPage }) => {
             <div className="arcade-video-list">
               {videos.map((video) => (
                 <article key={video.id}>
-                  <iframe data-platform src={`https://www.youtube.com/embed/${video.id}?rel=0`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title={video.title} />
+                  <div className="arcade-video-preview" data-platform data-platform-floor>
+                    <img src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`} alt="" loading="lazy" />
+                    {activeVideos[video.id] ? (
+                      <iframe src={`https://www.youtube.com/embed/${video.id}?rel=0&autoplay=1`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title={video.title} />
+                    ) : (
+                      <button data-platform className="arcade-youtube-play" type="button" aria-label={`Play ${video.title}`} onClick={() => setActiveVideos((current) => ({ ...current, [video.id]: true }))}>
+                        <Play size={24} fill="currentColor" aria-hidden="true" />
+                      </button>
+                    )}
+                  </div>
                   <h3 data-platform><a href={video.url} target="_blank" rel="noopener noreferrer">{video.title} <ArrowUpRight size={16} aria-hidden="true" /></a></h3>
                   <p data-platform>{video.subtitle}</p>
                 </article>
@@ -99,6 +110,29 @@ const CreativePage = ({ setCurrentPage }) => {
           </section>
         </div>
       </main>
+      <div className="arcade-volcano-landscape" aria-hidden="true">
+        <ArcadeAtmosphere />
+        <div className="arcade-volcano-skyline">
+          <span className="skyline-peak skyline-far-one" />
+          <span className="skyline-peak skyline-far-two" />
+          <span className="skyline-peak skyline-far-three" />
+          <span className="skyline-peak skyline-near-one" />
+          <span className="skyline-peak skyline-near-two" />
+          <span className="skyline-peak skyline-near-three" />
+        </div>
+        <div className="arcade-volcano">
+          <div className="arcade-volcano-mountain" data-platform data-platform-slope />
+          <div className="arcade-volcano-crater" />
+          <span data-platform data-moving-platform className="arcade-volcano-cloud volcano-cloud-one" />
+          <span data-platform data-moving-platform className="arcade-volcano-cloud volcano-cloud-two" />
+          <div className="arcade-eruption">
+            {Array.from({ length: 9 }, (_, particle) => (
+              <i key={particle} style={{ "--lava-x": `${(particle - 4) * 32}px`, "--lava-y": `${-100 - (4 - Math.abs(particle - 4)) * 24}px`, "--eruption-delay": `${particle * .06}s` }} />
+            ))}
+            <span className="arcade-volcano-smoke" />
+          </div>
+        </div>
+      </div>
       <div className="arcade-ground" aria-hidden="true">
         {Array.from({ length: 24 }, (_, tile) => (
           <span className="arcade-ground-tile" key={tile}>
